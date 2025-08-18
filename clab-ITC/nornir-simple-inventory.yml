@@ -1,0 +1,26 @@
+---
+agg1:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.5
+cpe:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.3
+cpe2:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.2
+ixr-s-1:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.6
+ixr-s-2:
+    username: admin
+    password: admin
+    platform: nokia_sros
+    hostname: 172.20.20.4
