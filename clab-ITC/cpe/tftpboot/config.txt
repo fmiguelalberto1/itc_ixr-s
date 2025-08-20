@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated FRI AUG 08 03:08:54 2025 UTC
+# Generated WED AUG 20 02:18:41 2025 UTC
 
 exit all
 configure
@@ -329,7 +329,7 @@ echo "Service Configuration"
         ies 10 name "10" customer 1 create
             interface "to-agg1" create
                 address 12.12.12.10/24
-                sap lag-1:10 create
+                sap lag-1:1 create
                 exit
             exit
             no shutdown
@@ -357,4 +357,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished FRI AUG 08 03:08:54 2025 UTC
+# Finished WED AUG 20 02:18:41 2025 UTC

@@ -1,0 +1,67 @@
+{
+  "freeTextAnnotations": [],
+  "groupStyleAnnotations": [],
+  "cloudNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "agg1",
+      "position": {
+        "x": 189,
+        "y": 35
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.94715732050749,
+        "lng": 9.356115290711951
+      }
+    },
+    {
+      "id": "ixr-s-1",
+      "position": {
+        "x": -21,
+        "y": -7
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.37744159058781,
+        "lng": 9.269995375688644
+      }
+    },
+    {
+      "id": "ixr-s-2",
+      "position": {
+        "x": -21,
+        "y": 63
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.224646781927675,
+        "lng": 9.569752872826909
+      }
+    },
+    {
+      "id": "cpe",
+      "position": {
+        "x": -161,
+        "y": -7
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.32770139398589,
+        "lng": 9.818401642626698
+      }
+    },
+    {
+      "id": "cpe2",
+      "position": {
+        "x": -189,
+        "y": 77
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.24441388179144,
+        "lng": 9.044063847597192
+      }
+    }
+  ]
+}

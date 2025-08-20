@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated FRI AUG 08 03:24:08 2025 UTC
+# Generated WED AUG 20 02:18:27 2025 UTC
 
 exit all
 configure
@@ -290,6 +290,9 @@ echo "System Sync-If-Timing Configuration"
 echo "LAG Configuration"
 #--------------------------------------------------
     lag 1
+        shutdown
+    exit
+    lag 2
         mode hybrid
         encap-type dot1q
         port 1/1/c1/1
@@ -319,6 +322,18 @@ echo "Service Configuration"
         customer 1 name "1" create
             description "Default customer"
         exit
+        ies 10 name "10" customer 1 create
+            interface "vpls2" create
+            exit
+        exit
+        ies 10 name "10" customer 1 create
+            interface "vpls2" create
+                address 2.2.2.10/24
+                sap lag-2:2 create
+                exit
+            exit
+            no shutdown
+        exit
     exit
 #--------------------------------------------------
 echo "Router (Service Side) Configuration"
@@ -342,4 +357,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished FRI AUG 08 03:24:08 2025 UTC
+# Finished WED AUG 20 02:18:27 2025 UTC

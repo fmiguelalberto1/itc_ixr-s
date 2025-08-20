@@ -9,33 +9,28 @@ topology:
       # license is required to run IXR-DNX and 7730 on Containerlabtest2
       license: ../license-srl24.10.txt
     nokia_sros:
-      image: vrnetlab/nokia_sros:24.10.R2 
+      image: vrnetlab/nokia_sros:24.10.R2
       license: ../license-sros-24.txt
-  nodes: 
-    agg1: 
-      kind: nokia_sros
+  nodes:
+    agg1:
       type: ixr-s
     ixr-s-1:
-      kind: nokia_sros
       type: ixr-s
     ixr-s-2:
-      kind: nokia_sros
       type: ixr-s
     cpe:
-      kind: nokia_sros
       type: sr-1
     cpe2:
-      kind: nokia_sros
       type: sr-1
   links:
-    - endpoints: ["agg1:eth1", "ixr-s-1:eth1"]
-    - endpoints: ["agg1:eth2", "ixr-s-1:eth2"]
-    - endpoints: ["agg1:eth3", "ixr-s-1:eth3"]
-    - endpoints: ["agg1:eth4", "ixr-s-2:eth1"]
-    - endpoints: ["agg1:eth5", "ixr-s-2:eth2"]
-    - endpoints: ["agg1:eth6", "ixr-s-2:eth3"]
-    - endpoints: ["ixr-s-1:eth4", "cpe:eth1"]
-    - endpoints: ["ixr-s-2:eth4", "cpe:eth2"]
-    - endpoints: ["ixr-s-1:eth5", "cpe2:eth1"]
-    - endpoints: ["ixr-s-2:eth5", "cpe2:eth2"]
-    - endpoints: ["ixr-s-2:eth6", "ixr-s-1:eth6"]
+    - endpoints: [ agg1:eth1, ixr-s-1:eth1 ]
+    - endpoints: [ agg1:eth2, ixr-s-1:eth2 ]
+    - endpoints: [ agg1:eth3, ixr-s-1:eth3 ]
+    - endpoints: [ agg1:eth4, ixr-s-2:eth1 ]
+    - endpoints: [ agg1:eth5, ixr-s-2:eth2 ]
+    - endpoints: [ agg1:eth6, ixr-s-2:eth3 ]
+    - endpoints: [ ixr-s-1:eth4, cpe:eth1 ]
+    - endpoints: [ ixr-s-2:eth4, cpe:eth2 ]
+    - endpoints: [ ixr-s-1:eth5, cpe2:eth1 ]
+    - endpoints: [ ixr-s-2:eth5, cpe2:eth2 ]
+    - endpoints: [ ixr-s-2:eth6, ixr-s-1:eth6 ]

@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated FRI AUG 08 03:24:15 2025 UTC
+# Generated WED AUG 20 02:18:32 2025 UTC
 
 exit all
 configure
@@ -183,39 +183,36 @@ echo "Port Configuration"
 #--------------------------------------------------
     port 1/1/1
         ethernet
-            mode hybrid
+            mode access
             encap-type dot1q
-            lacp-tunnel
         exit
         no shutdown
     exit
     port 1/1/2
         ethernet
-            mode hybrid
+            mode access
             encap-type dot1q
         exit
         no shutdown
     exit
     port 1/1/3
         ethernet
-            mode hybrid
+            mode access
             encap-type dot1q
         exit
         no shutdown
     exit
     port 1/1/4
         ethernet
-            mode hybrid
+            mode access
             encap-type dot1q
-            lacp-tunnel
         exit
         no shutdown
     exit
     port 1/1/5
         ethernet
-            mode hybrid
+            mode access
             encap-type dot1q
-            lacp-tunnel
         exit
         no shutdown
     exit
@@ -459,9 +456,49 @@ echo "System Sync-If-Timing Configuration"
 echo "LAG Configuration"
 #--------------------------------------------------
     lag 1
-        shutdown
-        mode hybrid
+        mode access
         encap-type dot1q
+        port 1/1/4
+        lacp active administrative-key 32768 system-priority 100
+        no shutdown
+    exit
+    lag 2
+        mode access
+        encap-type dot1q
+        port 1/1/5
+        lacp active administrative-key 32002 system-priority 100
+        no shutdown
+    exit
+    lag 10
+        mode access
+        encap-type dot1q
+        port 1/1/1
+        lacp active administrative-key 32769 system-priority 100
+        no shutdown
+    exit
+    lag 11
+        mode access
+        encap-type dot1q
+        port 1/1/2
+        lacp active administrative-key 32011 system-priority 100
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Redundancy Configuration"
+#--------------------------------------------------
+    redundancy
+        multi-chassis
+            peer 10.10.10.2 create
+                mc-lag
+                    lag 1 lacp-key 1 system-id 00:00:00:00:00:01 system-priority 32768
+                    lag 2 lacp-key 2 system-id 00:00:00:00:00:02 system-priority 32768
+                    lag 10 lacp-key 10 system-id 00:00:00:00:00:10 system-priority 32768
+                    lag 11 lacp-key 11 system-id 00:00:00:00:00:11 system-priority 32768
+                    no shutdown
+                exit
+                no shutdown
+            exit
+        exit
     exit
 #--------------------------------------------------
 echo "Management Router Configuration"
@@ -474,6 +511,28 @@ echo "Router (Network Side) Configuration"
 #--------------------------------------------------
     router Base
         interface "system"
+            address 10.10.10.1/32
+            no shutdown
+        exit
+        interface "to-ixr-s_2"
+            address 10.1.2.1/24
+            port 1/1/6:12
+            ingress
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            area 0.0.0.0
+                interface "system"
+                    no shutdown
+                exit
+                interface "to-ixr-s_2"
+                    no shutdown
+                exit
+            exit
             no shutdown
         exit
     exit
@@ -488,27 +547,35 @@ echo "Service Configuration"
             description "Default customer"
         exit
         vpls 1 name "1" customer 1 create
+            disable-learning
             stp
                 shutdown
             exit
-            sap 1/1/1:0 create
+            sap lag-1:1 create
                 no shutdown
             exit
-            sap 1/1/4:0 create
+            sap lag-10:1 create
                 no shutdown
             exit
-            sap 1/1/5:0 create
+            sap 1/1/6:1 create
+                disable-learning
                 no shutdown
             exit
             no shutdown
         exit
-        epipe 10 name "10" customer 1 create
-            sap 1/1/1:10 create
-                monitor-oper-group "test"
+        vpls 2 name "2" customer 1 create
+            disable-learning
+            stp
+                shutdown
+            exit
+            sap lag-2:2 create
                 no shutdown
             exit
-            sap 1/1/4:10 create
-                oper-group "test"
+            sap lag-10:2 create
+                no shutdown
+            exit
+            sap 1/1/6:2 create
+                disable-learning
                 no shutdown
             exit
             no shutdown
@@ -520,6 +587,12 @@ echo "Service Configuration"
 echo "Router (Service Side) Configuration"
 #--------------------------------------------------
     router Base
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            no shutdown
+        exit
     exit
 
 #--------------------------------------------------
@@ -538,4 +611,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished FRI AUG 08 03:24:15 2025 UTC
+# Finished WED AUG 20 02:18:32 2025 UTC
