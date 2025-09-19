@@ -17,10 +17,10 @@ all:
         clab-ITC-agg1:
           ansible_host: 172.20.20.5
         clab-ITC-cpe:
-          ansible_host: 172.20.20.3
-        clab-ITC-cpe2:
           ansible_host: 172.20.20.2
-        clab-ITC-ixr-s-1:
+        clab-ITC-cpe2:
           ansible_host: 172.20.20.6
+        clab-ITC-ixr-s-1:
+          ansible_host: 172.20.20.3
         clab-ITC-ixr-s-2:
           ansible_host: 172.20.20.4

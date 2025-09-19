@@ -7,7 +7,7 @@
       "id": "agg1",
       "position": {
         "x": 189,
-        "y": 35
+        "y": -35
       },
       "icon": "router",
       "geoCoordinates": {
@@ -19,7 +19,7 @@
       "id": "ixr-s-1",
       "position": {
         "x": -21,
-        "y": -7
+        "y": -77
       },
       "icon": "router",
       "geoCoordinates": {
@@ -31,7 +31,7 @@
       "id": "ixr-s-2",
       "position": {
         "x": -21,
-        "y": 63
+        "y": -7
       },
       "icon": "router",
       "geoCoordinates": {
@@ -42,8 +42,8 @@
     {
       "id": "cpe",
       "position": {
-        "x": -161,
-        "y": -7
+        "x": -189,
+        "y": -77
       },
       "icon": "router",
       "geoCoordinates": {
@@ -55,7 +55,7 @@
       "id": "cpe2",
       "position": {
         "x": -189,
-        "y": 77
+        "y": -7
       },
       "icon": "router",
       "geoCoordinates": {

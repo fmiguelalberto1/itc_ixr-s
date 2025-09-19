@@ -8,17 +8,17 @@ cpe:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.3
+    hostname: 172.20.20.2
 cpe2:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.2
+    hostname: 172.20.20.6
 ixr-s-1:
     username: admin
     password: admin
     platform: nokia_sros
-    hostname: 172.20.20.6
+    hostname: 172.20.20.3
 ixr-s-2:
     username: admin
     password: admin
