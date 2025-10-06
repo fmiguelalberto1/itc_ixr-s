@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated THU SEP 18 17:03:12 2025 UTC
+# Generated MON OCT 06 17:15:24 2025 UTC
 
 exit all
 configure
@@ -636,7 +636,7 @@ echo "Service Configuration"
             sap lag-1:10 create
                 no shutdown
             exit
-            sap lag-64:10 create
+            sap lag-64:100 create
                 no shutdown
             exit
             no shutdown
@@ -683,4 +683,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished THU SEP 18 17:03:12 2025 UTC
+# Finished MON OCT 06 17:15:24 2025 UTC
