@@ -44,7 +44,7 @@
       "icon": "router",
       "position": {
         "x": 91,
-        "y": 91
+        "y": 77
       },
       "geoCoordinates": {
         "lat": 48.684826888402256,
@@ -61,6 +61,18 @@
       "geoCoordinates": {
         "lat": 48.684826888402256,
         "lng": 9.007895390625677
+      }
+    },
+    {
+      "id": "central-cpe",
+      "icon": "router",
+      "position": {
+        "x": 469,
+        "y": 119
+      },
+      "geoCoordinates": {
+        "lat": 48.684826888402256,
+        "lng": 9.107895390625677
       }
     }
   ]
