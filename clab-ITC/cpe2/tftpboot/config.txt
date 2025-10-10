@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated THU SEP 18 17:05:59 2025 UTC
+# Generated TUE OCT 07 17:42:35 2025 UTC
 
 exit all
 configure
@@ -287,16 +287,6 @@ echo "System Sync-If-Timing Configuration"
         exit
     exit
 #--------------------------------------------------
-echo "LAG Configuration"
-#--------------------------------------------------
-    lag 1
-        mode hybrid
-        encap-type dot1q
-        port 1/1/c1/1
-        port 1/1/c2/1
-        no shutdown
-    exit
-#--------------------------------------------------
 echo "Management Router Configuration"
 #--------------------------------------------------
     router management
@@ -317,18 +307,6 @@ echo "Service Configuration"
     service
         customer 1 name "1" create
             description "Default customer"
-        exit
-        ies 2 name "2" customer 1 create
-            interface "to-agg" create
-            exit
-        exit
-        ies 2 name "2" customer 1 create
-            interface "to-agg" create
-                address 2.2.2.10/24
-                sap lag-1:2 create
-                exit
-            exit
-            no shutdown
         exit
     exit
 #--------------------------------------------------
@@ -353,4 +331,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished THU SEP 18 17:05:59 2025 UTC
+# Finished TUE OCT 07 17:42:35 2025 UTC

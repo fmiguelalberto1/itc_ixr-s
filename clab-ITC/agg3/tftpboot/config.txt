@@ -1,9 +1,9 @@
-# TiMOS-C-24.10.R2 cpm/x86_64 Nokia 7250 IXR Copyright (c) 2000-2024 Nokia.
+# TiMOS-B-24.10.R2 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2024 Nokia.
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated FRI OCT 10 14:10:46 2025 UTC
+# Generated FRI OCT 10 14:11:52 2025 UTC
 
 exit all
 configure
@@ -11,7 +11,7 @@ configure
 echo "System Configuration"
 #--------------------------------------------------
     system
-        name "ixr-s-2"
+        name "agg3"
         config-backup 5
         dns
             address-pref ipv6-first
@@ -32,6 +32,11 @@ echo "System Configuration"
                 shutdown
             exit
             zone UTC
+        exit
+        bluetooth
+            module A
+            exit
+            power off
         exit
     exit
 #--------------------------------------------------
@@ -112,6 +117,7 @@ echo "System Security Configuration"
             snmp
                 community "76HzdddhlPpRo1Vql+ZB5spLqccgYQ==" hash2 r version v2c
             exit
+            per-peer-queuing
             telnet
             exit
         exit
@@ -137,6 +143,9 @@ echo "System gRPC Configuration"
     system
         grpc
             allow-unsecure-connection
+            rib-api
+                no shutdown
+            exit
             no shutdown
         exit
     exit
@@ -149,8 +158,9 @@ echo "Oper-Groups (Declarations) Configuration"
 echo "Card Configuration"
 #--------------------------------------------------
     card 1
-        card-type imm48-sfp++6-qsfp28
+        card-type iom-1
         mda 1
+            mda-type me12-100gb-qsfp28
             no shutdown
         exit
         no shutdown
@@ -158,280 +168,115 @@ echo "Card Configuration"
 #--------------------------------------------------
 echo "Connector Configuration"
 #--------------------------------------------------
-    port 1/1/c49
+    port 1/1/c1
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c2
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c3
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c4
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c5
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c6
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c7
         shutdown
     exit
-    port 1/1/c50
+    port 1/1/c8
         shutdown
     exit
-    port 1/1/c51
+    port 1/1/c9
         shutdown
     exit
-    port 1/1/c52
+    port 1/1/c10
         shutdown
     exit
-    port 1/1/c53
+    port 1/1/c11
         shutdown
     exit
-    port 1/1/c54
+    port 1/1/c12
         shutdown
     exit
 #--------------------------------------------------
 echo "Port Configuration"
 #--------------------------------------------------
-    port 1/1/1
+    port 1/1/c1/1
+        ethernet
+            mode hybrid
+            encap-type dot1q
+            mtu 8704
+        exit
+        no shutdown
+    exit
+    port 1/1/c2/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
     exit
-    port 1/1/2
-        ethernet
-            mode access
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/3
-        ethernet
-            mode access
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/4
-        ethernet
-            mode access
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/5
-        ethernet
-            mode access
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/6
+    port 1/1/c3/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
     exit
-    port 1/1/7
-        shutdown
+    port 1/1/c4/1
         ethernet
+            mode hybrid
+            encap-type dot1q
         exit
+        no shutdown
     exit
-    port 1/1/8
-        shutdown
+    port 1/1/c5/1
         ethernet
+            mode hybrid
+            encap-type dot1q
         exit
+        no shutdown
     exit
-    port 1/1/9
-        shutdown
+    port 1/1/c6/1
         ethernet
+            mode hybrid
+            encap-type dot1q
         exit
-    exit
-    port 1/1/10
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/11
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/12
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/13
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/14
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/15
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/16
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/17
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/18
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/19
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/20
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/21
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/22
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/23
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/24
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/25
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/26
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/27
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/28
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/29
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/30
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/31
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/32
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/33
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/34
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/35
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/36
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/37
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/38
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/39
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/40
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/41
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/42
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/43
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/44
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/45
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/46
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/47
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/48
-        shutdown
-        ethernet
-        exit
+        no shutdown
     exit
     port A/1
+    exit
+    port A/3
+        shutdown
+        ethernet
+        exit
+    exit
+    port A/4
+        shutdown
     exit
 #--------------------------------------------------
 echo "System Sync-If-Timing Configuration"
@@ -443,15 +288,6 @@ echo "System Sync-If-Timing Configuration"
         exit
     exit
 #--------------------------------------------------
-echo "LAG Configuration"
-#--------------------------------------------------
-    lag 1
-        mode access
-        encap-type dot1q
-        port 1/1/4
-        no shutdown
-    exit
-#--------------------------------------------------
 echo "Management Router Configuration"
 #--------------------------------------------------
     router management
@@ -461,30 +297,18 @@ echo "Management Router Configuration"
 echo "Router (Network Side) Configuration"
 #--------------------------------------------------
     router Base
-#--------------------------------------------------
-echo "MPLS Label Range Configuration"
-#--------------------------------------------------
-        mpls-labels
-            reserved-label-block "evpn"
-                start-label 18432 end-label 19432
-            exit
-        exit
         interface "system"
-            address 10.10.10.2/32
+            address 10.10.10.30/32
             no shutdown
         exit
         interface "to-agg1"
-            address 10.2.10.2/24
-            port 1/1/1:210
-            ingress
-            exit
+            address 10.10.30.30/24
+            port 1/1/c1/1:1030
             no shutdown
         exit
-        interface "to-ixrs-1"
-            address 10.1.2.2/24
-            port 1/1/6:12
-            ingress
-            exit
+        interface "to-agg2"
+            address 10.20.30.30/24
+            port 1/1/c2/1:2030
             no shutdown
         exit
         autonomous-system 65001
@@ -496,36 +320,13 @@ echo "OSPFv2 Configuration"
                 interface "system"
                     no shutdown
                 exit
-                interface "to-ixrs-1"
-                    no shutdown
-                exit
                 interface "to-agg1"
                     no shutdown
                 exit
+                interface "to-agg2"
+                    no shutdown
+                exit
             exit
-            no shutdown
-        exit
-#--------------------------------------------------
-echo "MPLS Configuration"
-#--------------------------------------------------
-        mpls
-            interface "system"
-                no shutdown
-            exit
-        exit
-#--------------------------------------------------
-echo "RSVP Configuration"
-#--------------------------------------------------
-        rsvp
-            interface "system"
-                no shutdown
-            exit
-            no shutdown
-        exit
-#--------------------------------------------------
-echo "MPLS LSP Configuration"
-#--------------------------------------------------
-        mpls
             no shutdown
         exit
 #--------------------------------------------------
@@ -537,13 +338,13 @@ echo "LDP Configuration"
             tcp-session-parameters
             exit
             interface-parameters
-                interface "to-ixrs-1" dual-stack
+                interface "to-agg1" dual-stack
                     ipv4
                         no shutdown
                     exit
                     no shutdown
                 exit
-                interface "to-agg1" dual-stack
+                interface "to-agg2" dual-stack
                     ipv4
                         no shutdown
                     exit
@@ -562,42 +363,6 @@ echo "Service Configuration"
     service
         customer 1 name "1" create
             description "Default customer"
-        exit
-        system
-            bgp-evpn
-                ingress-replication-bum-label-block evpn
-                ethernet-segment "esi-1"  create
-                    esi 01:00:00:00:00:01:00:00:00:01
-                    service-carving
-                        mode auto
-                    exit
-                    multi-homing all-active
-                    lag 1
-                    no shutdown
-                exit
-            exit
-        exit
-        vpls 10 name "10" customer 1 create
-            bgp
-            exit
-            bgp-evpn
-                evi 10
-                mpls bgp 1
-                    ingress-replication-bum-label
-                    ecmp 2
-                    auto-bind-tunnel
-                        resolution any
-                    exit
-                    no shutdown
-                exit
-            exit
-            stp
-                shutdown
-            exit
-            sap lag-1:10 create
-                no shutdown
-            exit
-            no shutdown
         exit
     exit
 #--------------------------------------------------
@@ -641,4 +406,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished FRI OCT 10 14:10:46 2025 UTC
+# Finished FRI OCT 10 14:11:52 2025 UTC

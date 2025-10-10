@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated MON OCT 06 17:15:33 2025 UTC
+# Generated FRI OCT 10 14:10:33 2025 UTC
 
 exit all
 configure
@@ -11,7 +11,7 @@ configure
 echo "System Configuration"
 #--------------------------------------------------
     system
-        name "central-cpe"
+        name "rr"
         config-backup 5
         dns
             address-pref ipv6-first
@@ -297,6 +297,47 @@ echo "Router (Network Side) Configuration"
 #--------------------------------------------------
     router Base
         interface "system"
+            address 10.10.10.100/32
+            no shutdown
+        exit
+        interface "to-agg2"
+            address 10.20.100.100/24
+            port 1/1/c1/1:2100
+            no shutdown
+        exit
+        autonomous-system 65001
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            area 0.0.0.0
+                interface "system"
+                    no shutdown
+                exit
+                interface "to-agg2"
+                    no shutdown
+                exit
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "LDP Configuration"
+#--------------------------------------------------
+        ldp
+            import-pmsi-routes
+            exit
+            tcp-session-parameters
+            exit
+            interface-parameters
+                interface "to-agg2" dual-stack
+                    ipv4
+                        no shutdown
+                    exit
+                    no shutdown
+                exit
+            exit
+            targeted-session
+            exit
             no shutdown
         exit
     exit
@@ -308,23 +349,38 @@ echo "Service Configuration"
         customer 1 name "1" create
             description "Default customer"
         exit
-        ies 1 name "1" customer 1 create
-            interface "console-server" create
-            exit
-        exit
-        ies 1 name "1" customer 1 create
-            interface "console-server" create
-                address 12.12.12.23/24
-                sap 1/1/c1/1:100 create
-                exit
-            exit
-            no shutdown
-        exit
     exit
 #--------------------------------------------------
 echo "Router (Service Side) Configuration"
 #--------------------------------------------------
     router Base
+#--------------------------------------------------
+echo "OSPFv2 Configuration"
+#--------------------------------------------------
+        ospf 0
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "BGP Configuration"
+#--------------------------------------------------
+        bgp
+            group "itc"
+                family evpn
+                local-as 65001
+                peer-as 65001
+                neighbor 10.10.10.1
+                exit
+                neighbor 10.10.10.2
+                exit
+                neighbor 10.10.10.10
+                exit
+                neighbor 10.10.10.20
+                exit
+                neighbor 10.10.10.30
+                exit
+            exit
+            no shutdown
+        exit
     exit
 
 #--------------------------------------------------
@@ -343,4 +399,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished MON OCT 06 17:15:34 2025 UTC
+# Finished FRI OCT 10 14:10:33 2025 UTC

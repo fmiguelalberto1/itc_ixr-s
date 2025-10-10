@@ -14,15 +14,23 @@ topology:
   nodes:
     agg1:
       type: ixr-s
+    agg2:
+      type: sr-1
+    agg3:
+      type: sr-1
+    rr:
+      type: sr-1
     ixr-s-1:
       type: ixr-s
     ixr-s-2:
       type: ixr-s
-    cpe:
+    cpe1:
       type: sr-1
     cpe2:
       type: sr-1
-    central-cpe:
+    cpe-agg1:
+      type: sr-1
+    cpe-agg2:
       type: sr-1
   links:
     - endpoints: [ agg1:eth1, ixr-s-1:eth1 ]
@@ -31,10 +39,15 @@ topology:
     - endpoints: [ agg1:eth4, ixr-s-2:eth1 ]
     - endpoints: [ agg1:eth5, ixr-s-2:eth2 ]
     - endpoints: [ agg1:eth6, ixr-s-2:eth3 ]
-    - endpoints: [ ixr-s-1:eth4, cpe:eth1 ]
-    - endpoints: [ ixr-s-2:eth4, cpe:eth2 ]
+    - endpoints: [ ixr-s-1:eth4, cpe1:eth1 ]
+    - endpoints: [ ixr-s-2:eth4, cpe1:eth2 ]
     - endpoints: [ ixr-s-1:eth5, cpe2:eth1 ]
     - endpoints: [ ixr-s-2:eth5, cpe2:eth2 ]
     - endpoints: [ ixr-s-2:eth6, ixr-s-1:eth6 ]
-    - endpoints: [ agg1:eth7, central-cpe:eth1]
+    - endpoints: [ agg1:eth7, cpe-agg1:eth1]
+    - endpoints: [ agg2:eth4, cpe-agg2:eth1]
+    - endpoints: [ agg1:eth8, agg2:eth1]
+    - endpoints: [ agg1:eth9, agg3:eth1]
+    - endpoints: [ agg2:eth2, agg3:eth2]
+    - endpoints: [ agg2:eth3, rr:eth1]
 

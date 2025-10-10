@@ -1,9 +1,9 @@
-# TiMOS-C-24.10.R2 cpm/x86_64 Nokia 7250 IXR Copyright (c) 2000-2024 Nokia.
+# TiMOS-B-24.10.R2 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2024 Nokia.
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated FRI OCT 10 14:11:08 2025 UTC
+# Generated TUE OCT 07 17:42:28 2025 UTC
 
 exit all
 configure
@@ -11,7 +11,7 @@ configure
 echo "System Configuration"
 #--------------------------------------------------
     system
-        name "agg1"
+        name "cpe1"
         config-backup 5
         dns
             address-pref ipv6-first
@@ -32,6 +32,11 @@ echo "System Configuration"
                 shutdown
             exit
             zone UTC
+        exit
+        bluetooth
+            module A
+            exit
+            power off
         exit
     exit
 #--------------------------------------------------
@@ -112,6 +117,7 @@ echo "System Security Configuration"
             snmp
                 community "76HzdddhlPpRo1Vql+ZB5spLqccgYQ==" hash2 r version v2c
             exit
+            per-peer-queuing
             telnet
             exit
         exit
@@ -137,6 +143,9 @@ echo "System gRPC Configuration"
     system
         grpc
             allow-unsecure-connection
+            rib-api
+                no shutdown
+            exit
             no shutdown
         exit
     exit
@@ -149,8 +158,9 @@ echo "Oper-Groups (Declarations) Configuration"
 echo "Card Configuration"
 #--------------------------------------------------
     card 1
-        card-type imm48-sfp++6-qsfp28
+        card-type iom-1
         mda 1
+            mda-type me12-100gb-qsfp28
             no shutdown
         exit
         no shutdown
@@ -158,288 +168,114 @@ echo "Card Configuration"
 #--------------------------------------------------
 echo "Connector Configuration"
 #--------------------------------------------------
-    port 1/1/c49
+    port 1/1/c1
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c2
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c3
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c4
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c5
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c6
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
+    exit
+    port 1/1/c7
         shutdown
     exit
-    port 1/1/c50
+    port 1/1/c8
         shutdown
     exit
-    port 1/1/c51
+    port 1/1/c9
         shutdown
     exit
-    port 1/1/c52
+    port 1/1/c10
         shutdown
     exit
-    port 1/1/c53
+    port 1/1/c11
         shutdown
     exit
-    port 1/1/c54
+    port 1/1/c12
         shutdown
     exit
 #--------------------------------------------------
 echo "Port Configuration"
 #--------------------------------------------------
-    port 1/1/1
+    port 1/1/c1/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
     exit
-    port 1/1/2
+    port 1/1/c2/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
     exit
-    port 1/1/3
+    port 1/1/c3/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
     exit
-    port 1/1/4
+    port 1/1/c4/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
     exit
-    port 1/1/5
+    port 1/1/c5/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
     exit
-    port 1/1/6
+    port 1/1/c6/1
         ethernet
             mode hybrid
             encap-type dot1q
         exit
         no shutdown
-    exit
-    port 1/1/7
-        ethernet
-            mode hybrid
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/8
-        ethernet
-            mode hybrid
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/9
-        ethernet
-            mode hybrid
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/10
-        ethernet
-            mode hybrid
-            encap-type dot1q
-        exit
-        no shutdown
-    exit
-    port 1/1/11
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/12
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/13
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/14
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/15
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/16
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/17
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/18
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/19
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/20
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/21
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/22
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/23
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/24
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/25
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/26
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/27
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/28
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/29
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/30
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/31
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/32
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/33
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/34
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/35
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/36
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/37
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/38
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/39
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/40
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/41
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/42
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/43
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/44
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/45
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/46
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/47
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/48
-        shutdown
-        ethernet
-        exit
     exit
     port A/1
+    exit
+    port A/3
+        shutdown
+        ethernet
+        exit
+    exit
+    port A/4
+        shutdown
     exit
 #--------------------------------------------------
 echo "System Sync-If-Timing Configuration"
@@ -461,97 +297,6 @@ echo "Router (Network Side) Configuration"
 #--------------------------------------------------
     router Base
         interface "system"
-            address 10.10.10.10/32
-            no shutdown
-        exit
-        interface "to-agg2"
-            address 10.10.20.10/24
-            port 1/1/8:1020
-            ingress
-            exit
-            no shutdown
-        exit
-        interface "to-agg3"
-            address 10.10.30.10/24
-            port 1/1/9:1030
-            ingress
-            exit
-            no shutdown
-        exit
-        interface "to-ixr-s-1"
-            address 10.1.10.10/24
-            port 1/1/1:110
-            ingress
-            exit
-            no shutdown
-        exit
-        interface "to-ixr-s-2"
-            address 10.2.10.10/24
-            port 1/1/4:210
-            ingress
-            exit
-            no shutdown
-        exit
-        autonomous-system 65001
-#--------------------------------------------------
-echo "OSPFv2 Configuration"
-#--------------------------------------------------
-        ospf 0
-            area 0.0.0.0
-                interface "system"
-                    no shutdown
-                exit
-                interface "to-ixr-s-1"
-                    no shutdown
-                exit
-                interface "to-ixr-s-2"
-                    no shutdown
-                exit
-                interface "to-agg2"
-                    no shutdown
-                exit
-                interface "to-agg3"
-                    no shutdown
-                exit
-            exit
-            no shutdown
-        exit
-#--------------------------------------------------
-echo "LDP Configuration"
-#--------------------------------------------------
-        ldp
-            import-pmsi-routes
-            exit
-            tcp-session-parameters
-            exit
-            interface-parameters
-                interface "to-ixr-s-1" dual-stack
-                    ipv4
-                        no shutdown
-                    exit
-                    no shutdown
-                exit
-                interface "to-ixr-s-2" dual-stack
-                    ipv4
-                        no shutdown
-                    exit
-                    no shutdown
-                exit
-                interface "to-agg2" dual-stack
-                    ipv4
-                        no shutdown
-                    exit
-                    no shutdown
-                exit
-                interface "to-agg3" dual-stack
-                    ipv4
-                        no shutdown
-                    exit
-                    no shutdown
-                exit
-            exit
-            targeted-session
-            exit
             no shutdown
         exit
     exit
@@ -568,25 +313,6 @@ echo "Service Configuration"
 echo "Router (Service Side) Configuration"
 #--------------------------------------------------
     router Base
-#--------------------------------------------------
-echo "OSPFv2 Configuration"
-#--------------------------------------------------
-        ospf 0
-            no shutdown
-        exit
-#--------------------------------------------------
-echo "BGP Configuration"
-#--------------------------------------------------
-        bgp
-            group "itc"
-                family evpn
-                local-as 65001
-                peer-as 65001
-                neighbor 10.10.10.100
-                exit
-            exit
-            no shutdown
-        exit
     exit
 
 #--------------------------------------------------
@@ -605,4 +331,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished FRI OCT 10 14:11:08 2025 UTC
+# Finished TUE OCT 07 17:42:28 2025 UTC

@@ -7,7 +7,7 @@
       "id": "agg1",
       "icon": "router",
       "position": {
-        "x": 357,
+        "x": 259,
         "y": 119
       },
       "geoCoordinates": {
@@ -16,11 +16,47 @@
       }
     },
     {
+      "id": "agg2",
+      "icon": "router",
+      "position": {
+        "x": 357,
+        "y": 77
+      },
+      "geoCoordinates": {
+        "lat": 48.684826888402256,
+        "lng": 9.107895390625677
+      }
+    },
+    {
+      "id": "agg3",
+      "icon": "router",
+      "position": {
+        "x": 357,
+        "y": 147
+      },
+      "geoCoordinates": {
+        "lat": 48.88482688840226,
+        "lng": 9.307895390625678
+      }
+    },
+    {
+      "id": "rr",
+      "icon": "router",
+      "position": {
+        "x": 413,
+        "y": 119
+      },
+      "geoCoordinates": {
+        "lat": 49.084826888402254,
+        "lng": 9.507895390625677
+      }
+    },
+    {
       "id": "ixr-s-1",
       "icon": "router",
       "position": {
-        "x": 203,
-        "y": 77
+        "x": 147,
+        "y": 63
       },
       "geoCoordinates": {
         "lat": 48.684826888402256,
@@ -31,7 +67,7 @@
       "id": "ixr-s-2",
       "icon": "router",
       "position": {
-        "x": 203,
+        "x": 147,
         "y": 133
       },
       "geoCoordinates": {
@@ -40,22 +76,22 @@
       }
     },
     {
-      "id": "cpe",
+      "id": "cpe1",
       "icon": "router",
       "position": {
-        "x": 91,
-        "y": 77
+        "x": 7,
+        "y": 63
       },
       "geoCoordinates": {
-        "lat": 48.684826888402256,
-        "lng": 9.007895390625677
+        "lat": 49.28482688840226,
+        "lng": 9.707895390625676
       }
     },
     {
       "id": "cpe2",
       "icon": "router",
       "position": {
-        "x": 91,
+        "x": 7,
         "y": 133
       },
       "geoCoordinates": {
@@ -64,15 +100,27 @@
       }
     },
     {
-      "id": "central-cpe",
+      "id": "cpe-agg1",
       "icon": "router",
       "position": {
-        "x": 469,
-        "y": 119
+        "x": 259,
+        "y": 63
       },
       "geoCoordinates": {
-        "lat": 48.684826888402256,
-        "lng": 9.107895390625677
+        "lat": 49.48482688840225,
+        "lng": 9.007895390625677
+      }
+    },
+    {
+      "id": "cpe-agg2",
+      "icon": "router",
+      "position": {
+        "x": 413,
+        "y": 77
+      },
+      "geoCoordinates": {
+        "lat": 48.78482688840226,
+        "lng": 9.207895390625676
       }
     }
   ]

@@ -15,14 +15,22 @@ all:
         ansible_password: admin
       hosts:
         clab-ITC-agg1:
-          ansible_host: 172.20.20.6
-        clab-ITC-central-cpe:
           ansible_host: 172.20.20.5
-        clab-ITC-cpe:
-          ansible_host: 172.20.20.7
-        clab-ITC-cpe2:
-          ansible_host: 172.20.20.3
-        clab-ITC-ixr-s-1:
+        clab-ITC-agg2:
+          ansible_host: 172.20.20.11
+        clab-ITC-agg3:
+          ansible_host: 172.20.20.10
+        clab-ITC-cpe-agg1:
           ansible_host: 172.20.20.4
-        clab-ITC-ixr-s-2:
+        clab-ITC-cpe-agg2:
+          ansible_host: 172.20.20.8
+        clab-ITC-cpe1:
           ansible_host: 172.20.20.2
+        clab-ITC-cpe2:
+          ansible_host: 172.20.20.9
+        clab-ITC-ixr-s-1:
+          ansible_host: 172.20.20.3
+        clab-ITC-ixr-s-2:
+          ansible_host: 172.20.20.6
+        clab-ITC-rr:
+          ansible_host: 172.20.20.7
