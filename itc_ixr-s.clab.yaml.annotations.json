@@ -43,7 +43,7 @@
       "id": "rr",
       "icon": "router",
       "position": {
-        "x": 413,
+        "x": 441,
         "y": 119
       },
       "geoCoordinates": {
@@ -56,7 +56,7 @@
       "icon": "router",
       "position": {
         "x": 147,
-        "y": 63
+        "y": 49
       },
       "geoCoordinates": {
         "lat": 48.684826888402256,
@@ -68,7 +68,7 @@
       "icon": "router",
       "position": {
         "x": 147,
-        "y": 133
+        "y": 147
       },
       "geoCoordinates": {
         "lat": 48.684826888402256,
@@ -80,7 +80,7 @@
       "icon": "router",
       "position": {
         "x": 7,
-        "y": 63
+        "y": 49
       },
       "geoCoordinates": {
         "lat": 49.28482688840226,
@@ -92,7 +92,7 @@
       "icon": "router",
       "position": {
         "x": 7,
-        "y": 133
+        "y": 147
       },
       "geoCoordinates": {
         "lat": 48.684826888402256,
@@ -104,7 +104,7 @@
       "icon": "router",
       "position": {
         "x": 259,
-        "y": 63
+        "y": 49
       },
       "geoCoordinates": {
         "lat": 49.48482688840225,
@@ -115,7 +115,7 @@
       "id": "cpe-agg2",
       "icon": "router",
       "position": {
-        "x": 413,
+        "x": 441,
         "y": 77
       },
       "geoCoordinates": {

@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated FRI OCT 10 14:11:08 2025 UTC
+# Generated FRI OCT 10 17:40:24 2025 UTC
 
 exit all
 configure
@@ -451,6 +451,15 @@ echo "System Sync-If-Timing Configuration"
         exit
     exit
 #--------------------------------------------------
+echo "LAG Configuration"
+#--------------------------------------------------
+    lag 1
+        mode hybrid
+        encap-type dot1q
+        port 1/1/7
+        no shutdown
+    exit
+#--------------------------------------------------
 echo "Management Router Configuration"
 #--------------------------------------------------
     router management
@@ -460,6 +469,14 @@ echo "Management Router Configuration"
 echo "Router (Network Side) Configuration"
 #--------------------------------------------------
     router Base
+#--------------------------------------------------
+echo "MPLS Label Range Configuration"
+#--------------------------------------------------
+        mpls-labels
+            reserved-label-block "evpn"
+                start-label 18432 end-label 19432
+            exit
+        exit
         interface "system"
             address 10.10.10.10/32
             no shutdown
@@ -502,9 +519,11 @@ echo "OSPFv2 Configuration"
                     no shutdown
                 exit
                 interface "to-ixr-s-1"
+                    metric 65535
                     no shutdown
                 exit
                 interface "to-ixr-s-2"
+                    metric 65535
                     no shutdown
                 exit
                 interface "to-agg2"
@@ -563,6 +582,42 @@ echo "Service Configuration"
         customer 1 name "1" create
             description "Default customer"
         exit
+        system
+            bgp-evpn
+                ingress-replication-bum-label-block evpn
+                ethernet-segment "esi-1"  create
+                    esi 01:00:00:00:00:01:00:00:00:11
+                    service-carving
+                        mode auto
+                    exit
+                    multi-homing all-active
+                    lag 1
+                    no shutdown
+                exit
+            exit
+        exit
+        vpls 10 name "10" customer 1 create
+            bgp
+            exit
+            bgp-evpn
+                evi 10
+                mpls bgp 1
+                    ingress-replication-bum-label
+                    ecmp 2
+                    auto-bind-tunnel
+                        resolution any
+                    exit
+                    no shutdown
+                exit
+            exit
+            stp
+                shutdown
+            exit
+            sap lag-1:10 create
+                no shutdown
+            exit
+            no shutdown
+        exit
     exit
 #--------------------------------------------------
 echo "Router (Service Side) Configuration"
@@ -605,4 +660,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished FRI OCT 10 14:11:08 2025 UTC
+# Finished FRI OCT 10 17:40:25 2025 UTC

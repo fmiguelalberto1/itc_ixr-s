@@ -3,7 +3,7 @@
 # Built on Wed Dec 18 23:49:33 UTC 2024 by builder in /builds/2410B/R2/panos/main/sros
 # Configuration format version 24.10 revision 0
 
-# Generated TUE OCT 07 17:41:53 2025 UTC
+# Generated FRI OCT 10 15:28:28 2025 UTC
 
 exit all
 configure
@@ -287,6 +287,15 @@ echo "System Sync-If-Timing Configuration"
         exit
     exit
 #--------------------------------------------------
+echo "LAG Configuration"
+#--------------------------------------------------
+    lag 1
+        mode hybrid
+        encap-type dot1q
+        port 1/1/c1/1
+        no shutdown
+    exit
+#--------------------------------------------------
 echo "Management Router Configuration"
 #--------------------------------------------------
     router management
@@ -296,6 +305,10 @@ echo "Management Router Configuration"
 echo "Router (Network Side) Configuration"
 #--------------------------------------------------
     router Base
+        interface "evpn10"
+            address 1.1.1.11/28
+            no shutdown
+        exit
         interface "system"
             no shutdown
         exit
@@ -331,4 +344,4 @@ echo "System Configuration Mode Configuration"
 
 exit all
 
-# Finished TUE OCT 07 17:41:53 2025 UTC
+# Finished FRI OCT 10 15:28:28 2025 UTC
